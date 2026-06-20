@@ -1,0 +1,38 @@
+<div class="login-card">
+  <h1 class="main-title">Smart Matrimony</h1>
+  <p class="subtitle">Find your perfect destiny</p>
+
+  <form (ngSubmit)="onLogin()">
+
+    <div class="text-start">
+      <label class="form-label" for="emailInput">Email Address</label>
+      <input
+        id="emailInput"
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        class="form-control"
+        placeholder="testuser@gmail.com"
+        required>
+    </div>
+
+    <div class="text-start">
+      <label class="form-label" for="passInput">Password</label>
+      <input
+        id="passInput"
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        class="form-control"
+        required>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+      {{ isLoading ? 'Logging in...' : 'Login' }}
+    </button>
+
+    <br><br>
+    <a routerLink="/register" class="register-link">New here? Register Now</a>
+
+  </form>
+</div>

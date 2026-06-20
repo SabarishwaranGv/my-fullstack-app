@@ -1,0 +1,86 @@
+:host {
+  display: block;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
+              url('https://wallpaperaccess.com/full/1623493.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
+  padding: 40px 0;
+  color: white;
+}
+
+.register-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  width: 100%;
+  max-width: 750px;
+  margin: auto;
+  -webkit-backdrop-filter: blur(15px); /* Fixed prefix sequence */
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+/* ... Keep remaining properties unchanged ... */
+
+.main-title {
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.subtitle {
+  color: #ffd700;
+  font-style: italic;
+}
+
+.section-title {
+  color: #ffd700;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.form-label {
+  color: white;
+}
+
+.form-control,
+.form-select {
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  width: 100%;
+  color: #333;
+}
+
+.btn-register {
+  background: linear-gradient(45deg, #d63384, #ff4d6d);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 25px;
+  box-shadow: 0 10px 20px rgba(214, 51, 132, 0.3);
+  transition: 0.3s;
+  display: block;
+  cursor: pointer;
+}
+
+.btn-register:hover {
+  transform: scale(1.02);
+}
+
+.btn-register:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}

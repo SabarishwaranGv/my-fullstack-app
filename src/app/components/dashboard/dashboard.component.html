@@ -1,0 +1,83 @@
+<div class="dashboard-wrapper">
+
+  <div class="glass-header">
+    <div>
+      <h1 class="brand-title">Smart Matrimony</h1>
+      <p class="brand-sub">Find your destiny</p>
+    </div>
+    <div class="d-flex align-items-center">
+      <div class="status-badge me-3" [ngClass]="isPremium ? 'badge-premium' : 'badge-basic'">
+        {{ memberBadgeText }}
+      </div>
+      <div class="dropdown">
+        <button class="d-flex align-items-center btn text-white p-0 border-0 btn-clean-nav"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="User Account Navigation Profile Menu">
+          <div class="text-end me-2">
+            <div class="username-display">{{ userFullName || currentUsername }}</div>
+          </div>
+          <img [src]="userHeaderPic" 
+               (error)="setDefaultAvatar($event, userFullName)"
+               class="nav-profile-img" 
+               alt="User Account Navigation Profile Avatar"
+               title="User Profile Menu Banner">
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow">
+          <li><a class="dropdown-item" href="#">👤 Edit Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item text-danger fw-bold"
+               href="javascript:void(0)"
+               (click)="logout()">🚪 Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-heading">Top Matches Based on Your Profile</h3>
+
+  <div class="loading-msg" *ngIf="isLoading">⏳ Loading your matches...</div>
+
+  <div class="loading-msg" *ngIf="!isLoading && errorMessage">{{ errorMessage }}</div>
+
+  <div class="loading-msg" *ngIf="!isLoading && !errorMessage && (!matches || matches.length === 0)">
+    😔 No matches found yet. Keep checking!
+  </div>
+
+  <div class="match-grid" *ngIf="!isLoading && matches && matches.length > 0">
+
+    <button *ngFor="let match of matches"
+            class="match-card text-start text-white w-100 d-block border-0 btn-clean-nav p-0"
+            (click)="!isPremium ? goToPayment() : null"
+            type="button">
+
+      <div class="lock-overlay" *ngIf="!isPremium">
+        <span class="lock-glyph">🔒</span>
+        <div class="status-badge badge-basic mt-2">UPGRADE TO SEE</div>
+      </div>
+
+      <div class="score-pill" *ngIf="isPremium">{{ match?.matchScore }} pts</div>
+
+      <div [class.blur-content]="!isPremium" class="text-center p-4">
+        <img [src]="getPhotoUrl(match)"
+             (error)="setDefaultAvatar($event, match?.fullName || 'User')"
+             class="profile-img"
+             title="Match Profile Details"
+             [alt]="(match?.fullName || 'Candidate') + ' Profile Avatar'"
+             [title]="(match?.fullName || 'Candidate') + ' Match Profile Details'">
+        <h3 class="match-name">{{ match?.fullName || 'Premium Match' }}</h3>
+        <p class="match-sub">{{ match?.age || '??' }} Years • {{ match?.occupation || 'Professional' }}</p>
+        <div class="mt-2">
+          <span *ngFor="let tag of getInterestTags(match?.interests)"
+                class="tag">{{ tag }}</span>
+        </div>
+      </div>
+
+    </button>
+
+  </div>
+
+</div>

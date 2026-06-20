@@ -1,0 +1,22 @@
+<div class="page-wrapper d-flex align-items-center justify-content-center">
+  <div class="card p-5 text-center text-white">
+    <h2 class="plan-title fw-bold">Premium Destiny Pass 👑</h2>
+    
+    <p class="plan-desc my-4">
+      Unlock all highly-compatible matches, access hidden profile pictures, view verified phone numbers, and download professional biodatas instantly.
+    </p>
+    
+    <div class="price fw-bold display-4 my-3">₹499</div>
+    
+    <button class="btn btn-primary btn-lg w-100 py-3 fw-bold my-3" 
+            type="button"
+            (click)="payNow()" 
+            [disabled]="isLoading">
+      {{ isLoading ? 'Initializing Transaction...' : 'ACTIVATE PREMIUM NOW' }}
+    </button>
+    
+    <div class="mt-3">
+      <a routerLink="/dashboard" class="back-link text-decoration-none fw-bold">← Return to Dashboard</a>
+    </div>
+  </div>
+</div>

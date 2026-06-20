@@ -1,0 +1,101 @@
+<div class="register-card">
+  <div class="text-center mb-4">
+    <h1 class="main-title">Smart Matrimony</h1>
+    <p class="subtitle">"Start your journey toward destiny"</p>
+  </div>
+
+  <form (ngSubmit)="onRegister()">
+
+    <h5 class="section-title">🔐 Account Credentials</h5>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="emailReg">Email Address</label>
+        <input id="emailReg" type="email" name="username"
+               [(ngModel)]="formData.username"
+               class="form-control" placeholder="example@gmail.com" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="passReg">Password</label>
+        <input id="passReg" type="password" name="password"
+               [(ngModel)]="formData.password"
+               class="form-control" required>
+      </div>
+    </div>
+
+    <h5 class="section-title">💍 Personal Identity</h5>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label class="form-label" for="fullNameReg">Full Name</label>
+        <input id="fullNameReg" type="text" name="fullName"
+               [(ngModel)]="formData.fullName"
+               class="form-control" placeholder="Sabari G V" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label" for="genderReg">Gender</label>
+        <select id="genderReg" name="gender"
+                [(ngModel)]="formData.gender"
+                class="form-select">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label" for="ageReg">Age</label>
+        <input id="ageReg" type="number" name="age"
+               [(ngModel)]="formData.age"
+               class="form-control" min="18" required>
+      </div>
+    </div>
+
+    <h5 class="section-title">📍 Professional & Roots</h5>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="occReg">Occupation</label>
+        <input id="occReg" type="text" name="occupation"
+               [(ngModel)]="formData.occupation"
+               class="form-control" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="cityReg">City</label>
+        <input id="cityReg" type="text" name="city"
+               [(ngModel)]="formData.city"
+               class="form-control" required>
+      </div>
+    </div>
+
+    <h5 class="section-title">💖 Matching Info</h5>
+    <div class="mb-3">
+      <label class="form-label" for="interestsReg">Interests (Comma separated)</label>
+      <input id="interestsReg" type="text" name="interests"
+             [(ngModel)]="formData.interests"
+             class="form-control" placeholder="Boxing, Cycling, Gym">
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="phoneReg">Phone Number</label>
+      <input id="phoneReg" type="text" name="phone"
+             [(ngModel)]="formData.phone"
+             class="form-control">
+    </div>
+
+    <h5 class="section-title">📸 & 📄 Document Uploads</h5>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="photoReg">Profile Photo</label>
+        <input id="photoReg" type="file" name="photo"
+               (change)="onPhotoChange($event)"
+               class="form-control" accept="image/*" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label" for="pdfReg">Biodata / CV (PDF)</label>
+        <input id="pdfReg" type="file" name="bioPdf"
+               (change)="onBioPdfChange($event)"
+               class="form-control" accept="application/pdf" required>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-register w-100" [disabled]="isLoading">
+      {{ isLoading ? 'Processing...' : 'Create Destiny Profile 💍' }}
+    </button>
+
+  </form>
+</div>
